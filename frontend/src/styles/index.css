@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased selection:bg-brand-500 selection:text-white;
+  }
+}
+
+/* Glassmorphism custom classes */
+.glass-panel {
+  @apply bg-white/75 backdrop-blur-md border border-slate-200/50 shadow-glass rounded-2xl transition-all duration-300;
+}
+
+.dark .glass-panel {
+  @apply bg-darkbg-800/60 backdrop-blur-md border border-slate-800/40 shadow-glass-dark rounded-2xl transition-all duration-300;
+}
+
+/* Hover scales and premium animations */
+.glass-card-hover {
+  @apply hover:scale-[1.01] hover:border-brand-500/30 hover:shadow-lg dark:hover:border-brand-500/20;
+}
+
+/* Custom linear gradient animations for glowing backdrops */
+.glow-spot {
+  @apply absolute w-80 h-80 rounded-full filter blur-[80px] opacity-20 pointer-events-none;
+}
+
+.glow-purple {
+  @apply bg-brand-500 top-[-10%] left-[-10%] animate-pulse;
+}
+
+.glow-blue {
+  @apply bg-blue-500 bottom-[-10%] right-[-10%] animate-pulse;
+}
+
+/* Smooth premium scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-slate-600;
+}
+
+/* Print layouts for highly-polished report cards */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    color: black !important;
+  }
+}
