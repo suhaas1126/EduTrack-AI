@@ -9,6 +9,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+let dbStatus = 'disconnected';
 
 // Enable CORS with support for local development
 app.use(cors({
@@ -25,9 +26,11 @@ const connectDB = async () => {
   try {
     mongoose.set('strictQuery', true);
     await mongoose.connect(dbUri);
+    dbStatus = 'connected';
     console.log('>>> SUCCESS: Connected to StudentSphere MongoDB Cluster.');
   } catch (error) {
-    console.error('>>> DATABASE OFFLINE: Using Local Sandbox In-Memory failover mode.');
+    dbStatus = 'disconnected';
+    console.error('>>> DATABASE OFFLINE: MongoDB connection failed.');
     console.error(error.message);
   }
 };
@@ -40,7 +43,8 @@ app.get('/', (req, res) => {
   res.json({
     status: 'online',
     project: 'StudentSphere AI API Service',
-    mode: mongoose.connection.readyState === 1 ? 'Production Cluster' : 'Local Sandbox Mode',
+    database: dbStatus,
+    mode: mongoose.connection.readyState === 1 ? 'Production Cluster' : 'Database Disconnected',
     timestamp: new Date()
   });
 });

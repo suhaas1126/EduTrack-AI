@@ -81,8 +81,8 @@ const studentSchema = new mongoose.Schema(
   }
 );
 
-// Indexing commonly searched fields for SaaS performance
-studentSchema.index({ rollNumber: 1 });
+// Index commonly searched fields for SaaS performance.
+// rollNumber and email already get indexes from `unique: true`.
 studentSchema.index({ name: 'text', rollNumber: 'text', email: 'text' });
 
 module.exports = mongoose.model('Student', studentSchema);
