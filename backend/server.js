@@ -24,11 +24,9 @@ app.use(express.json({ limit: '10mb' }));
 const connectDB = async () => {
   try {
     mongoose.set('strictQuery', true);
-    await mongoose.connect(process.env.MONGODB_URI, {
-      serverSelectionTimeoutMS: 10000
-    });
+    await mongoose.connect(process.env.MONGODB_URI);
 
-    console.log('>>> SUCCESS: Connected to StudentSphere MongoDB Cluster.');
+    console.log('>>> SUCCESS: Connected to EduTrack AI MongoDB Cluster.');
   } catch (error) {
     console.error('>>> DATABASE OFFLINE:', error.message);
     process.exit(1);
@@ -41,11 +39,8 @@ mongoose.connection.on('disconnected', () => {
 
 app.get('/', (req, res) => {
   res.json({
-    status: 'online',
-    project: 'StudentSphere AI API Service',
-    database: getDatabaseStatus(),
-    environment: process.env.NODE_ENV || 'development',
-    timestamp: new Date().toISOString()
+    success: true,
+    message: 'EduTrack AI Backend API Running'
   });
 });
 
@@ -53,9 +48,9 @@ app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'online',
     database: getDatabaseStatus(),
+    environment: process.env.NODE_ENV,
     uptime: process.uptime(),
-    environment: process.env.NODE_ENV || 'development',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
@@ -87,7 +82,7 @@ const startServer = async () => {
 
   app.listen(PORT, () => {
     console.log(`=========================================`);
-    console.log(` STUDENTSPHERE AI BACKEND RUNNING        `);
+    console.log(` EDUTRACK AI BACKEND RUNNING             `);
     console.log(` Port: ${PORT}                           `);
     console.log(` Environment: ${process.env.NODE_ENV || 'development'} `);
     console.log(` Database: ${getDatabaseStatus()}                   `);

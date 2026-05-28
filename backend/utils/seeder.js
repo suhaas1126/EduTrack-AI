@@ -121,9 +121,8 @@ const studentsSeed = [
 ];
 
 const seedDatabase = async () => {
-  const dbUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/studentsphere';
   try {
-    await mongoose.connect(dbUri);
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB database for seeding...');
 
     // Clear existing records
