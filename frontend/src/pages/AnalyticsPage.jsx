@@ -181,7 +181,7 @@ const AnalyticsPage = () => {
 
           <div className="border-t border-slate-100 dark:border-slate-850 pt-4">
             <span className="text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-widest block">
-              Updated 1 min ago • StudentSphere AI Engine
+              Updated 1 min ago - EduTrack AI Engine
             </span>
           </div>
         </div>

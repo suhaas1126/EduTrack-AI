@@ -1,125 +1,55 @@
-# 🎓 EduTrack-AI
+# EduTrack AI
 
-EduTrack-AI is a modern AI-powered full-stack Student Management System built with React, Node.js, Express, and MongoDB.  
-It provides advanced student record management, attendance tracking, academic analytics, AI-powered insights, and premium SaaS-style dashboards.
+EduTrack AI is a full-stack MERN student management platform built for role-based academic operations. It combines student records, attendance, grades, analytics, reports, JWT authentication, MongoDB persistence, and AI-style risk insights in a production-ready dashboard.
 
----
+## Resume Summary
 
-# 🚀 Features
+**EduTrack AI - Full-Stack Student Management Platform**
 
-## 🔐 Authentication & Authorization
-- JWT Authentication
-- Role-Based Access Control
-- Admin / Teacher / Student Roles
-- Protected Routes
+Built and deployed a MERN web application with role-based Admin, Teacher, and Student dashboards. Implemented JWT authentication, protected REST APIs, MongoDB Atlas data persistence, student CRUD workflows, attendance and grade tracking, analytics charts, report generation, AI-style academic risk insights, global error handling, health monitoring, and Render-compatible deployment where Express serves the React production build.
 
----
+## Tech Stack
 
-## 👨‍🎓 Student Management
-- Add/Edit/Delete Students
-- Student Profiles
-- Department & Semester Management
-- Search, Filter & Pagination
+- React, Vite, Tailwind CSS, Framer Motion
+- Node.js, Express.js
+- MongoDB Atlas, Mongoose
+- JWT authentication and role-based authorization
+- Recharts analytics visualizations
+- Render deployment
 
----
+## Key Features
 
-## 📅 Attendance Management
-- Subject-wise Attendance
-- Attendance Percentage Tracking
-- Low Attendance Alerts
-- Attendance Analytics
+- Role-based dashboards for Admin, Teacher, and Student users
+- Protected authentication flow with JWT
+- Student profile management with search and filtering
+- Attendance and grade workflows
+- Academic analytics with interactive charts
+- AI-style risk predictions and recommendations
+- CSV/report tooling
+- Production health endpoint at `/health`
+- Centralized API error handling and 404 handling
+- Single-service deployment support: Express can serve the React build and API routes together
 
----
+## Demo Credentials
 
-## 📊 Academic Performance
-- Marks Management
-- GPA / CGPA Calculation
-- Subject-wise Performance Tracking
-- Grade Trends & Insights
-
----
-
-## 🤖 AI Features
-- Student Risk Prediction
-- AI-Based Performance Insights
-- Academic Recommendations
-- Attendance & Grade Trend Analysis
-
----
-
-## 📈 Analytics Dashboard
-- Interactive Charts
-- Top Performer Tracking
-- Pass/Fail Ratio
-- Department Comparison
-- Attendance Trends
-
----
-
-## 📄 Reports
-- PDF Report Generation
-- CSV Export
-- Printable Student Reports
-
----
-
-# 🛠️ Tech Stack
-
-## Frontend
-- React.js
-- Tailwind CSS
-- Framer Motion
-- Recharts
-
-## Backend
-- Node.js
-- Express.js
-
-## Database
-- MongoDB
-
-## Authentication
-- JWT Authentication
-
----
-
-# 📸 Screenshots
-
-## Dashboard
-(Add Screenshot Here)
-
-## Analytics Page
-(Add Screenshot Here)
-
-## Student Management
-(Add Screenshot Here)
-
-## Attendance Tracking
-(Add Screenshot Here)
-
----
-
-# ⚙️ Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/suhaas1126/EduTrack-AI.git
+```text
+admin@studentsphere.com
+password123
 ```
 
----
-
-## Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
+```text
+teacher@studentsphere.com
+password123
 ```
 
----
+```text
+student@studentsphere.com
+password123
+```
 
-## Backend Setup
+## Local Development
+
+Run the backend:
 
 ```bash
 cd backend
@@ -127,61 +57,88 @@ npm install
 npm run dev
 ```
 
----
+Run the frontend:
 
-# 🌐 Environment Variables
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-Create a `.env` file inside backend folder:
+Local URLs:
+
+```text
+Frontend: http://localhost:3000
+Backend:  http://localhost:5000
+Health:   http://localhost:5000/health
+```
+
+## Environment Variables
+
+Create `backend/.env`:
 
 ```env
-MONGODB_URI=your_mongodb_connection
-JWT_SECRET=your_secret_key
 PORT=5000
+MONGODB_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_secure_jwt_secret
+JWT_EXPIRES_IN=7d
+NODE_ENV=development
 ```
 
----
+Optional for separately deployed frontend:
 
-# 📁 Project Structure
+```env
+VITE_API_BASE_URL=https://your-backend-url.onrender.com/api
+```
 
-```plaintext
+When Express serves the frontend build from the same Render service, leave `VITE_API_BASE_URL` unset so the app uses `/api`.
+
+## Render Deployment
+
+The backend includes a `postinstall` script that builds the frontend during deployment. Express serves `frontend/dist` when it exists.
+
+Recommended Render settings:
+
+```bash
+Build Command: cd backend && npm install
+Start Command: cd backend && npm start
+```
+
+Required Render environment variables:
+
+```env
+NODE_ENV=production
+MONGODB_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_secure_jwt_secret
+JWT_EXPIRES_IN=7d
+```
+
+## API Routes
+
+- `GET /health`
+- `/api/auth`
+- `/api/students`
+- `/api/attendance`
+- `/api/grades`
+- `/api/ai`
+- `/api/reports`
+
+## Project Structure
+
+```text
 EduTrack-AI/
-│
-├── backend/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── services/
-│   └── server.js
-│
-├── frontend/
-│   ├── components/
-│   ├── pages/
-│   ├── context/
-│   ├── services/
-│   └── App.jsx
-│
-└── README.md
+  backend/
+    controllers/
+    middleware/
+    models/
+    routes/
+    services/
+    utils/
+    server.js
+  frontend/
+    src/
+      components/
+      context/
+      pages/
+      styles/
 ```
-
----
-
-# 🚀 Future Improvements
-
-- AI Chatbot Assistant
-- Real-time Notifications
-- Calendar Integration
-- Advanced ML Models
-- Mobile Application
-
----
-
-# 👨‍💻 Author
-
-## Suhaas Choudary
-
----
-
-# ⭐ If you like this project
-
-Give this repository a star ⭐

@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
-import { Sparkles, Mail, Lock, Eye, EyeOff, Info, ArrowRight } from 'lucide-react';
+import { GraduationCap, Mail, Lock, Eye, EyeOff, Info, ArrowRight } from 'lucide-react';
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -27,7 +27,7 @@ const LoginPage = () => {
     setLoading(false);
 
     if (result.success) {
-      showNotification('Successfully authenticated! Welcome back to StudentSphere.', 'success');
+      showNotification('Successfully authenticated. Welcome back to EduTrack AI.', 'success');
       
       // Dynamic routing based on logged user role
       setTimeout(() => {
@@ -51,7 +51,7 @@ const LoginPage = () => {
   const handleQuickLogin = (demoEmail) => {
     setEmail(demoEmail);
     setPassword('password123');
-    showNotification(`Populated ${demoEmail.split('@')[0]} credentials. Click Sign In!`, 'info');
+    showNotification(`Loaded ${demoEmail.split('@')[0]} demo credentials. Click Sign In.`, 'info');
   };
 
   return (
@@ -71,13 +71,13 @@ const LoginPage = () => {
         {/* Banner Title */}
         <div className="text-center space-y-2 mb-8">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 shadow-md mx-auto">
-            <Sparkles className="w-6 h-6 text-white" />
+            <GraduationCap className="w-6 h-6 text-white" />
           </div>
           <h2 className="text-2xl font-extrabold tracking-tight text-white mt-4">
-            Welcome to StudentSphere
+            Welcome to EduTrack AI
           </h2>
           <p className="text-slate-400 text-xs font-medium">
-            Enter credentials to log in or select a quick-access sandbox profile.
+            Sign in with a role-based demo profile to explore the full-stack dashboard.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ const LoginPage = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@studentsphere.com"
+                placeholder="admin@studentsphere.com"
                 className="w-full pl-11 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-sm transition-all"
               />
             </div>
@@ -119,7 +119,7 @@ const LoginPage = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="password123"
                 className="w-full pl-11 pr-11 py-3 bg-slate-900/60 border border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-sm transition-all"
               />
               <button
@@ -147,7 +147,7 @@ const LoginPage = () => {
         <div className="mt-8 border-t border-slate-700/50 pt-5 space-y-3">
           <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             <Info className="w-3.5 h-3.5 text-brand-400" />
-            <span>Developer Sandbox Quick Pass</span>
+            <span>Demo access profiles</span>
           </div>
           <div className="grid grid-cols-3 gap-2">
             <button

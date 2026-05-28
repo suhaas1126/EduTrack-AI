@@ -1,7 +1,7 @@
 {
-  "name": "studentsphere-api",
+  "name": "edutrack-ai-backend",
   "version": "1.0.0",
-  "description": "API backend for StudentSphere AI",
+  "description": "API backend for EduTrack AI",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

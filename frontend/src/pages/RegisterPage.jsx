@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
-import { Sparkles, Mail, Lock, User, UserCheck, ArrowRight } from 'lucide-react';
+import { GraduationCap, Mail, Lock, User, ArrowRight } from 'lucide-react';
 
 const RegisterPage = () => {
   const { register } = useAuth();
@@ -28,7 +28,7 @@ const RegisterPage = () => {
     setLoading(false);
 
     if (result.success) {
-      showNotification('Account generated successfully! Welcome to StudentSphere.', 'success');
+      showNotification('Account created successfully. Welcome to EduTrack AI.', 'success');
       
       // Navigate to respective dashboards
       setTimeout(() => {
@@ -57,13 +57,13 @@ const RegisterPage = () => {
       >
         <div className="text-center space-y-2 mb-6">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 shadow-md mx-auto">
-            <Sparkles className="w-6 h-6 text-white" />
+            <GraduationCap className="w-6 h-6 text-white" />
           </div>
           <h2 className="text-2xl font-extrabold tracking-tight text-white mt-4">
             Register Account
           </h2>
           <p className="text-slate-400 text-xs font-medium">
-            Join StudentSphere AI campus administration network.
+            Join the EduTrack AI academic operations platform.
           </p>
         </div>
 
@@ -99,7 +99,7 @@ const RegisterPage = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="jane.doe@studentsphere.com"
+                placeholder="jane.doe@edutrack.edu"
                 className="w-full pl-11 pr-4 py-2.5 bg-slate-900/60 border border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-sm transition-all"
               />
             </div>
@@ -117,7 +117,7 @@ const RegisterPage = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="Create a secure password"
                 className="w-full pl-11 pr-4 py-2.5 bg-slate-900/60 border border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-sm transition-all"
               />
             </div>

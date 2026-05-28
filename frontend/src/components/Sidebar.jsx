@@ -28,7 +28,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     navigate('/login');
   };
 
-  // Compile role-specific navigation arrays
   const getNavLinks = () => {
     const common = [
       { path: '/settings', label: 'Settings', icon: Settings },
@@ -58,7 +57,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       ];
     }
 
-    // Default: Student role routes
     return [
       { path: '/student-dashboard', label: 'My Portal', icon: LayoutDashboard },
       { path: `/student/${user.id || 'me'}`, label: 'Academic Profile', icon: GraduationCap },
@@ -95,7 +93,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
         className={`fixed top-0 bottom-0 left-0 z-40 flex flex-col h-full bg-white border-r border-slate-200/60 dark:bg-darkbg-800 dark:border-slate-800/50 md:sticky md:block md:w-68 no-print`}
       >
-        {/* Brand Banner Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-slate-200/50 dark:border-slate-800/40">
           <div className="flex items-center gap-2">
             <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 shadow-md">
@@ -103,10 +100,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             </div>
             <div>
               <span className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-brand-600 to-indigo-500 bg-clip-text text-transparent dark:from-brand-400 dark:to-indigo-400">
-                StudentSphere
+                EduTrack AI
               </span>
               <span className="block text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none">
-                AI platform
+                Academic OS
               </span>
             </div>
           </div>
@@ -119,7 +116,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           </button>
         </div>
 
-        {/* User Card */}
         {user && (
           <div className="px-6 py-5 border-b border-slate-200/40 dark:border-slate-800/30">
             <div className="flex items-center gap-3">
@@ -138,7 +134,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           </div>
         )}
 
-        {/* Navigation list */}
         <nav className="flex-1 px-4 py-6 overflow-y-auto space-y-1">
           {navLinks.map((link) => {
             const Icon = link.icon;
@@ -174,7 +169,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           })}
         </nav>
 
-        {/* Footer log out action */}
         <div className="p-4 border-t border-slate-200/40 dark:border-slate-800/30">
           <button
             onClick={handleSignOut}

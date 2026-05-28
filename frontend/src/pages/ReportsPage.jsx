@@ -67,7 +67,7 @@ const ReportsPage = () => {
     } catch (err) {
       // Fallback local transcript details
       setReportData({
-        schoolName: "StudentSphere Institute of Technology",
+        schoolName: "EduTrack Institute of Technology",
         term: "Academic Year 2026 - Fall Term",
         student,
         issuedAt: new Date().toLocaleDateString(),
@@ -236,7 +236,7 @@ const ReportsPage = () => {
                     </div>
                     <div>
                       <h2 className="text-xl font-black tracking-tight text-slate-900 leading-none">
-                        StudentSphere AI Platform
+                        EduTrack AI Platform
                       </h2>
                       <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block mt-1">
                         Academic Transcript Service

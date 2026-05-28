@@ -254,7 +254,7 @@ const StudentDetailsPage = () => {
             </div>
             <div>
               <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100">
-                StudentSphere Predictive AI Engine
+                EduTrack Predictive AI Engine
               </h3>
               <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">
                 Run statistical grade and attendance vectors evaluation
