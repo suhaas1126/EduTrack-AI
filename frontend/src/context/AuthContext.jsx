@@ -1,7 +1,10 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext(null);
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = (
+  import.meta.env.VITE_API_BASE_URL ||
+  (window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : '/api')
+).replace(/\/$/, '');
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -9,7 +12,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Validate session on boot
   useEffect(() => {
     const initAuth = async () => {
       const storedToken = localStorage.getItem('token');
@@ -31,12 +33,10 @@ export const AuthProvider = ({ children }) => {
           setToken(storedToken);
           setIsAuthenticated(true);
         } else {
-          // If server rejects token, clear everything
           logout();
         }
       } catch (err) {
         console.warn('Backend connection failed. Attempting mock recovery for demo purposes.');
-        // High fidelity dev-level failover: Decode token locally or mock it
         try {
           const parts = storedToken.split('.');
           if (parts.length === 3) {
@@ -60,7 +60,6 @@ export const AuthProvider = ({ children }) => {
     initAuth();
   }, []);
 
-  // Login handler
   const login = async (email, password) => {
     try {
       const res = await fetch(`${API_BASE}/auth/login`, {
@@ -84,7 +83,6 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.warn('API down, executing local dashboard demo credentials fallback.');
       
-      // Fallback for sandboxed offline presentation
       const lower = email.toLowerCase();
       if (password === 'password123' && (lower === 'admin@studentsphere.com' || lower === 'teacher@studentsphere.com' || lower === 'student@studentsphere.com')) {
         const mockRoles = {
@@ -105,7 +103,6 @@ export const AuthProvider = ({ children }) => {
           role: mockRoles[lower],
         };
 
-        // Synthesize a secure dummy token
         const header = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" }));
         const payload = btoa(JSON.stringify(mockUser));
         const dummyToken = `${header}.${payload}.signature`;
@@ -124,7 +121,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Register handler
   const register = async (name, email, password, role) => {
     try {
       const res = await fetch(`${API_BASE}/auth/register`, {
@@ -153,7 +149,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Logout handler
   const logout = () => {
     localStorage.removeItem('token');
     setToken('');

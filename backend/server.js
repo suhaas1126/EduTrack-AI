@@ -2,12 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const fs = require('fs');
+const path = require('path');
 const errorHandler = require('./middleware/error');
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const clientDistPath = path.join(__dirname, '../frontend/dist');
+const clientIndexPath = path.join(clientDistPath, 'index.html');
 
 const getDatabaseStatus = () => {
   return mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
@@ -37,13 +41,6 @@ mongoose.connection.on('disconnected', () => {
   console.warn('>>> DATABASE DISCONNECTED: MongoDB connection lost.');
 });
 
-app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    message: 'EduTrack AI Backend API Running'
-  });
-});
-
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'online',
@@ -68,12 +65,34 @@ app.use('/api/grades', gradeRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/reports', reportRoutes);
 
-app.use('*', (req, res) => {
+app.use('/api/*', (req, res) => {
   res.status(404).json({
     success: false,
-    message: 'Route not found'
+    message: 'Route not found',
   });
 });
+
+if (fs.existsSync(clientIndexPath)) {
+  app.use(express.static(clientDistPath));
+
+  app.get('*', (req, res) => {
+    res.sendFile(clientIndexPath);
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.json({
+      success: true,
+      message: 'EduTrack AI Backend API Running',
+    });
+  });
+
+  app.use('*', (req, res) => {
+    res.status(404).json({
+      success: false,
+      message: 'Route not found',
+    });
+  });
+}
 
 app.use(errorHandler);
 
