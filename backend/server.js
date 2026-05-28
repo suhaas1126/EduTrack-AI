@@ -80,9 +80,10 @@ if (fs.existsSync(clientIndexPath)) {
   });
 } else {
   app.get('/', (req, res) => {
-    res.json({
-      success: true,
-      message: 'EduTrack AI Backend API Running',
+    res.status(503).json({
+      success: false,
+      message: 'Frontend build not found. Redeploy with the frontend build step enabled.',
+      expectedBuildPath: clientIndexPath,
     });
   });
 
