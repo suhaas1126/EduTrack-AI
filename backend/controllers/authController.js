@@ -1,11 +1,10 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// Helper to sign JWT token
 const signToken = (id, name, email, role) => {
   return jwt.sign(
     { id, name, email, role },
-    process.env.JWT_SECRET || 'studentsphere_default_secret',
+    process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
   );
 };
