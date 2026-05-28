@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "seed": "node utils/seeder.js",
-    "build:frontend": "npm install --include=dev --prefix ../frontend && npm run build --prefix ../frontend",
-    "postinstall": "npm run build:frontend"
+    "seed": "node utils/seeder.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
