@@ -1,144 +1,276 @@
 # EduTrack AI
 
-EduTrack AI is a full-stack MERN student management platform built for role-based academic operations. It combines student records, attendance, grades, analytics, reports, JWT authentication, MongoDB persistence, and AI-style risk insights in a production-ready dashboard.
+A production-ready MERN Stack Student Management Platform featuring role-based dashboards, JWT authentication, attendance tracking, grade management, analytics, and cloud deployment.
 
-## Resume Summary
+## Live Demo
 
-**EduTrack AI - Full-Stack Student Management Platform**
+**Live Application:** https://edutrack-ai-4.onrender.com
 
-Built and deployed a MERN web application with role-based Admin, Teacher, and Student dashboards. Implemented JWT authentication, protected REST APIs, MongoDB Atlas data persistence, student CRUD workflows, attendance and grade tracking, analytics charts, report generation, AI-style academic risk insights, global error handling, health monitoring, and Render-compatible deployment where Express serves the React production build.
+**GitHub Repository:** https://github.com/suhaas1126/EduTrack-AI
+
+---
+
+## Overview
+
+EduTrack AI is a full-stack student management system designed to streamline academic operations for administrators, teachers, and students.
+
+The platform provides secure authentication, role-based access control, attendance management, grade tracking, reporting, analytics dashboards, and AI-assisted academic risk assessment.
+
+Built using the MERN Stack and deployed to the cloud using Render and MongoDB Atlas.
+
+---
+
+## Features
+
+### Authentication & Security
+
+* JWT-based Authentication
+* Protected Routes
+* Role-Based Access Control (RBAC)
+* Secure API Authorization
+
+### Admin Dashboard
+
+* Manage Students
+* View Academic Analytics
+* Monitor Attendance Records
+* Access Reports and Insights
+
+### Teacher Dashboard
+
+* Manage Student Data
+* Track Attendance
+* Assign Grades
+* View Academic Performance
+
+### Student Dashboard
+
+* View Attendance
+* Track Grades
+* Access Academic Progress Reports
+* Monitor Performance Trends
+
+### Analytics & Insights
+
+* Attendance Analytics
+* Grade Performance Tracking
+* Student Performance Visualization
+* AI-Assisted Risk Assessment
+
+### Backend Features
+
+* RESTful API Architecture
+* Centralized Error Handling
+* Health Monitoring Endpoint
+* MongoDB Atlas Integration
+* Mongoose ODM Data Modeling
+
+---
 
 ## Tech Stack
 
-- React, Vite, Tailwind CSS, Framer Motion
-- Node.js, Express.js
-- MongoDB Atlas, Mongoose
-- JWT authentication and role-based authorization
-- Recharts analytics visualizations
-- Render deployment
+### Frontend
 
-## Key Features
+* React.js
+* Tailwind CSS
+* React Router
+* Recharts
+* Framer Motion
 
-- Role-based dashboards for Admin, Teacher, and Student users
-- Protected authentication flow with JWT
-- Student profile management with search and filtering
-- Attendance and grade workflows
-- Academic analytics with interactive charts
-- AI-style risk predictions and recommendations
-- CSV/report tooling
-- Production health endpoint at `/health`
-- Centralized API error handling and 404 handling
-- Single-service deployment support: Express can serve the React build and API routes together
+### Backend
+
+* Node.js
+* Express.js
+* JWT Authentication
+* Mongoose
+
+### Database
+
+* MongoDB Atlas
+
+### Deployment
+
+* Render
+* MongoDB Atlas Cloud
+
+---
+
+## Project Architecture
+
+```text
+EduTrack AI
+│
+├── Frontend (React.js)
+│
+├── Backend (Node.js + Express.js)
+│
+├── Authentication (JWT)
+│
+├── MongoDB Atlas Database
+│
+└── Render Cloud Deployment
+```
+
+---
 
 ## Demo Credentials
+
+### Admin
 
 ```text
 admin@studentsphere.com
 password123
 ```
 
+### Teacher
+
 ```text
 teacher@studentsphere.com
 password123
 ```
+
+### Student
 
 ```text
 student@studentsphere.com
 password123
 ```
 
-## Local Development
+---
 
-Run the backend:
+## API Endpoints
 
-```bash
-cd backend
-npm install
-npm run dev
+### Authentication
+
+```text
+/api/auth
 ```
 
-Run the frontend:
+### Students
+
+```text
+/api/students
+```
+
+### Attendance
+
+```text
+/api/attendance
+```
+
+### Grades
+
+```text
+/api/grades
+```
+
+### AI Insights
+
+```text
+/api/ai
+```
+
+### Reports
+
+```text
+/api/reports
+```
+
+### Health Check
+
+```text
+/health
+```
+
+---
+
+## Local Setup
+
+### Clone Repository
+
+```bash
+git clone https://github.com/suhaas1126/EduTrack-AI.git
+```
+
+### Install Frontend Dependencies
 
 ```bash
 cd frontend
 npm install
-npm run dev
 ```
 
-Local URLs:
+### Install Backend Dependencies
+
+```bash
+cd backend
+npm install
+```
+
+### Environment Variables
+
+Create:
 
 ```text
-Frontend: http://localhost:3000
-Backend:  http://localhost:5000
-Health:   http://localhost:5000/health
+backend/.env
 ```
 
-## Environment Variables
-
-Create `backend/.env`:
+Add:
 
 ```env
 PORT=5000
-MONGODB_URI=your_mongodb_atlas_connection_string
-JWT_SECRET=your_secure_jwt_secret
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 JWT_EXPIRES_IN=7d
 NODE_ENV=development
 ```
 
-Optional for separately deployed frontend:
-
-```env
-VITE_API_BASE_URL=https://your-backend-url.onrender.com/api
-```
-
-When Express serves the frontend build from the same Render service, leave `VITE_API_BASE_URL` unset so the app uses `/api`.
-
-## Render Deployment
-
-The backend includes a `postinstall` script that builds the frontend during deployment. Express serves `frontend/dist` when it exists.
-
-Recommended Render settings:
+### Run Frontend
 
 ```bash
-Build Command: cd backend && npm install
-Start Command: cd backend && npm start
+cd frontend
+npm run dev
 ```
 
-Required Render environment variables:
+### Run Backend
 
-```env
-NODE_ENV=production
-MONGODB_URI=your_mongodb_atlas_connection_string
-JWT_SECRET=your_secure_jwt_secret
-JWT_EXPIRES_IN=7d
+```bash
+cd backend
+npm start
 ```
 
-## API Routes
+---
 
-- `GET /health`
-- `/api/auth`
-- `/api/students`
-- `/api/attendance`
-- `/api/grades`
-- `/api/ai`
-- `/api/reports`
+## Deployment
 
-## Project Structure
+### Frontend & Backend
 
-```text
-EduTrack-AI/
-  backend/
-    controllers/
-    middleware/
-    models/
-    routes/
-    services/
-    utils/
-    server.js
-  frontend/
-    src/
-      components/
-      context/
-      pages/
-      styles/
-```
+Hosted on Render:
+
+https://edutrack-ai-4.onrender.com
+
+### Database
+
+MongoDB Atlas Cloud Database
+
+---
+
+## Key Highlights
+
+* Production-Ready MERN Stack Application
+* JWT Authentication & RBAC
+* Cloud Deployment on Render
+* MongoDB Atlas Integration
+* RESTful API Development
+* Analytics Dashboard
+* AI-Assisted Academic Risk Assessment
+* Responsive User Interface
+
+---
+
+## Author
+
+**Suhaas Choudary Mallavarapu**
+
+GitHub: https://github.com/suhaas1126
+
+LinkedIn: Add Your LinkedIn Profile URL
