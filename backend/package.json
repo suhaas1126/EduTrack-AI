@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "seed": "node utils/seeder.js",
-    "build:frontend": "cd ../frontend && npm install && npx vite build",
-    "postinstall": "npm run build:frontend"
+    "seed": "node utils/seeder.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
